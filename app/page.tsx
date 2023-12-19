@@ -105,7 +105,7 @@ export default function Home() {
 
                     <div className="flex flex-nowrap lg:ml-40 md:ml-20 ml-10  ">
                     {colors.map((col,i)=>(
-                      <div className={` ${colors[Math.floor(Math.random()*5)]} shadow-xl inline-block  border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}>
+                      <div key={col} className={` ${colors[Math.floor(Math.random()*5)]} shadow-xl inline-block  border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}>
                       <p className="text-2xl">{i}</p>
                      </div>
 
@@ -124,7 +124,7 @@ export default function Home() {
                 <div className="flex flex-nowrap lg:ml-40 md:ml-20 ml-10   ">
 
               {colors.map((col,i)=>(
-              <div className={` ${colors[Math.floor(Math.random()*5)]} shadow-xl border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}>
+              <div key={col} className={` ${colors[Math.floor(Math.random()*5)]} shadow-xl border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}>
                   <p className="text-2xl">{i}</p>
               </div>
               ))}
