@@ -35,7 +35,7 @@ export default function Home() {
           <DarkModeToggle/>
           </div>
 
-            WinLo&nbsp;
+            WinLo
             <code className="font-mono font-bold">Chart</code>
             
 
