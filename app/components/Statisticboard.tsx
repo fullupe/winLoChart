@@ -11,7 +11,7 @@ function Statisticboard({}: Props) {
       {numbersArray.map((number,i) => (
         <div
           key={number}
-          className={`${colors[Math.floor(Math.random()*5)]} shadow-xl border-2 mx-auto border-black  text-white relative rounded-full flex  items-center justify-center  h-9 w-9 md:w-12 md:h-12`}
+          className={`${colors[Math.floor(Math.random()*4)]} shadow-xl border-2 mx-auto border-black  text-white relative rounded-full flex  items-center justify-center  h-9 w-9 md:w-12 md:h-12`}
         >
           <p>{number}</p>
 
