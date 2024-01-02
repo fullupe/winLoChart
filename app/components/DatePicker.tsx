@@ -36,7 +36,7 @@ function DatePicker({setStartDate,startdate}: Props) {
         mode="single"
         selected={startdate}
         onSelect={setStartDate}
-        initialFocus
+        //initialFocus
       />
     </PopoverContent>
   </Popover>
