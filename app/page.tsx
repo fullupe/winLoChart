@@ -77,7 +77,7 @@ export default function Home() {
   
 // @ts-ignore
 
-  let sortedResult = Object.entries(results).sort((a,b)=>b[1] - a[1]).slice(0,7).splice(1)
+  let sortedResult = Object.entries(results).sort((a,b)=>b[1] - a[1]).slice(0,8).splice(1)
 
 
 
