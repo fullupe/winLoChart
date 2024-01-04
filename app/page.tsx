@@ -10,6 +10,7 @@ import daysSpent from "./helper/daysSpent"
 import { useFetchData } from './hooks/useFetchData'
 
 import { Button } from '@/components/ui/button'
+//import { Select, SelectItem } from "@tremor/react";
 import {
   Dialog,
   DialogContent,
@@ -19,11 +20,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { CalendarIcon } from 'lucide-react'
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { CalculatorIcon, CalendarIcon, ListRestartIcon, SearchIcon, TimerResetIcon } from 'lucide-react'
 import DarkModeToggle from './components/DarkModeToggle'
 import DatePickerRange from './components/DatePickerRange'
 //import { Input } from "@/components/ui/input"
 //import { Label } from "@/components/ui/label"
+
+import { filterData } from './helper/filtedData'
+import ListGames from './components/ListGames'
 
 
 
@@ -31,7 +43,15 @@ import DatePickerRange from './components/DatePickerRange'
 
 export default function Home() {
 
-  const {DataApi}=useFetchData()
+  //const {DataApi}=useFetchData()
+  const [startdate, setStartDate] = useState<Date>()
+  const [enddate, setEndDate] = useState<Date>()
+
+  const [gameType, setGameType] = useState<string>('')
+                                       // @ts-ignore
+  const DataApi =filterData(startdate,enddate,gameType) 
+
+
 
   //console.log("data,",DataApi)
   
@@ -70,10 +90,10 @@ export default function Home() {
 
   //const numbersArray = Array.from({ length: 90 }, (_, index) => index + 1)
 
-  const [startdate, setStartDate] = useState<Date>()
-  const [enddate, setEndDate] = useState<Date>()
 
-  //console.log(results)
+  
+
+  //console.log(newstatus)
   
 // @ts-ignore
 
@@ -85,33 +105,40 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="flex min-h-screen flex-col items-center justify-centerd w-full relative">
         <div className="z-50 max-w-5xl w-full mb-12  items-center font-mono text-sm lg:flex">
+          
           <div className="fixed left-0 top-0 flex w-full justify-center items-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-4 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-autos  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
             <div className="flex  mr-6 ">
               <DarkModeToggle />
             </div>
             WinLo
             <code className="font-mono font-bold">Chart</code>
+            
             <div className="flex  ml-4 md:hidden">
               <Dialog>
-                {/* <DialogTrigger asChild>
+                <DialogTrigger asChild>
                 
                   <CalendarIcon className="ml-6 h-6 w-8 cursor-pointer" />
-                </DialogTrigger> */}
+                </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Select Date Range</DialogTitle>
+                    <DialogTitle>Options</DialogTitle>
                     <DialogDescription>
-                      Make changes to the Date here. Click Search when you're
-                      done.
+                     Select your Game
                     </DialogDescription>
                   </DialogHeader>
-                  <div className="grid gap-4 py-4">
+
+
+                <ListGames gameType={gameType} setGameType={setGameType}/>
+
+               
+
+                  {/* <div className="grid gap-4 py-4">
                     <div className="flex flex-col w-full items-center mb-8 space-y-4 md:flex ">
                       <div className="flex items-center space-x-4">
                         <p className="flex items-left font-bold font-mono">
                           From
                         </p>
-                        {/* <DatePickerRange/> */}
+                       
                         <DatePicker
                           startdate={startdate}
                           setStartDate={setStartDate}
@@ -128,9 +155,29 @@ export default function Home() {
                         />
                       </div>
                     </div>
+                  </div> */}
+
+       
+                  <DialogFooter className="z-10 ">
+
+                  <div className="flex w-full mt-4 justify-center space-x-40 ">
+                  <DialogTrigger onClick={()=>setGameType('')} asChild>
+                   
+                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+                    
+                  </DialogTrigger>
+
+                  <DialogTrigger asChild>
+                   {
+                     gameType && (
+                       <SearchIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+
+                     )
+                   }
+                  </DialogTrigger>
                   </div>
-                  <DialogFooter>
-                    <Button type="submit">Search</Button>
+
+                    {/* <Button type="submit">Search</Button> */}
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
@@ -139,6 +186,16 @@ export default function Home() {
             <p className="ml-3 text-xs">{daysSpent() as string}</p>
           </div>
         </div>
+
+          <div className="flex w-full justify-center mt-2 font-mono ">
+            {
+              gameType &&(
+
+                <p>{gameType}</p>
+              )
+            }
+
+          </div>
 
         <div className="absolute top-0 animate-blob animation-delay-4000 mix-blend-multiply filter blur-2xl  bg-yellow-200 -left-4 w-72 h-72 rounded-full -z-10"></div>
 
@@ -150,8 +207,31 @@ export default function Home() {
           <Statisticboard results={results} />
 
           <div className="flex flex-col  h-full w-full md:w-[50%] dark:bg-slate-900 rounded-lg md:py-6 items-center justify-center md:mr-4 mt-4 space-y-1">
-            {/* <div className="flex flex-col w-full items-center mb-8 space-y-4 hidden md:flex ">
-              <div className="flex items-center space-x-4">
+            
+          
+            
+            <div className="flex flex-col w-full items-center mb-8 space-y-4 hidden md:flex ">
+
+            <div className="w-full flex flex-col items-center justify-center pl-12 mb-3">
+            <p className="text-center text-md font-bold pb-3"> Select your Game</p>
+
+                <ListGames gameType={gameType} setGameType={setGameType}/>
+               </div>
+
+
+               <div className="flex w-full mt-4 justify-center space-x-40 ">
+                  <div onClick={()=>setGameType('')} >
+                   
+                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+                    
+                  </div>
+                  </div>
+               
+
+
+
+              
+              {/* <div className="flex items-center space-x-4">
                 <p className="flex items-left font-bold font-mono">From</p>
 
                
@@ -161,8 +241,9 @@ export default function Home() {
               <div className="flex items-center space-x-4 mb-4">
                 <p className="flex items-left ml-4 font-bold font-mono">To</p>
                 <DatePicker startdate={enddate} setStartDate={setEndDate} />
-              </div>
-            </div> */}
+              </div> */}
+
+            </div>
             <p className="flex text-xl font-mono font-bold">
               Most played Numbers
             </p>
@@ -185,20 +266,14 @@ export default function Home() {
                         
                       </div>
 
-                      <p className="absolute rounded-full  border-white border-2 bg-black justify-center flex items-center text-center z-10 text-white shadow-lg  text-[9px] h-5 w-5 top-10 left-5 md:left-10">{va[1] as string }</p>
+                      <p className="absolute rounded-full  border-white border-2 bg-black justify-center flex items-center text-center z-10 text-white shadow-lg  text-[9px] h-5 w-5 top-10 left-5 md:left-4">{va[1] as string }</p>
 
                       </div>
 
                         ))
                       }
 
-                     
-                      
-
-
-
-                  
-
+                    
 
                     {/* })} */}
 
