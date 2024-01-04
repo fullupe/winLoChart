@@ -26,6 +26,7 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="ANAMBRA SPECIAL">ANAMBRA SPECIAL</SelectItem>
                 <SelectItem value="BLESSED SUNDAY">BLESSED SUNDAY</SelectItem>
                 <SelectItem value="BONANZA EAST">BONANZA EAST</SelectItem>
+                <SelectItem value="BONANZA EAST">BONANZA</SelectItem>
                 <SelectItem value="CLUBMASTER">CLUBMASTER</SelectItem>
                 <SelectItem value="CROSS RIVERS SPECIAL">CROSS RIVERS SPECIAL</SelectItem>
                 <SelectItem value="DREAM NIGHT">DREAM NIGHT</SelectItem>
@@ -38,6 +39,7 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="MIDWEEK EAST">MIDWEEK EAST</SelectItem>
                 <SelectItem value="MONDAY SPECIAL EAST">MONDAY SPECIAL EAST</SelectItem>
                 <SelectItem value="NATIONAL EAST">NATIONAL EAST</SelectItem>
+                <SelectItem value="NATIONAL EAST">NATIONAL</SelectItem>
                 <SelectItem value="ONITSHA SPECIAL">ONITSHA SPECIAL</SelectItem>
                 <SelectItem value="PEOPLES">PEOPLES</SelectItem>
                 <SelectItem value="RNS NAIJA">RNS NAIJA</SelectItem>
@@ -48,10 +50,15 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="SUNRISE">SUNRISE</SelectItem>
                 <SelectItem value="VAG MONDAY">VAG MONDAY</SelectItem>
                 <SelectItem value="VAG TUESDAY">VAG TUESDAY</SelectItem>
+                <SelectItem value="VAG TUESDAY">VAG WEDNESDAY</SelectItem>
+                <SelectItem value="VAG TUESDAY">VAG THURSDAY</SelectItem>
+                <SelectItem value="VAG TUESDAY">VAG FRIDAY</SelectItem>
+                <SelectItem value="VAG TUESDAY">VAG SATURDAY</SelectItem>
                 <SelectItem value="LUCKY TUESDAY">LUCKY TUESDAY</SelectItem>
                 <SelectItem value="MONDAY SPECIAL">MONDAY SPECIALY</SelectItem>
                 <SelectItem value="VAG WEDNESDAY">VAG WEDNESDAY</SelectItem>
                 <SelectItem value="MID WEEK GH">MID WEEK GH</SelectItem>
+                <SelectItem value="MID WEEK GH">FORTUNE</SelectItem>
                 </SelectContent> 
                 </Select>
                </div>
