@@ -7,9 +7,6 @@ import DatePicker from './components/DatePicker'
 
 import daysSpent from "./helper/daysSpent"
 
-import { useFetchData } from './hooks/useFetchData'
-
-import { Button } from '@/components/ui/button'
 //import { Select, SelectItem } from "@tremor/react";
 import {
   Dialog,
@@ -21,18 +18,10 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { CalculatorIcon, CalendarIcon, ListRestartIcon, SearchIcon, TimerResetIcon } from 'lucide-react'
+
+import {CalendarIcon, ListRestartIcon, SearchIcon } from 'lucide-react'
 import DarkModeToggle from './components/DarkModeToggle'
-import DatePickerRange from './components/DatePickerRange'
-//import { Input } from "@/components/ui/input"
-//import { Label } from "@/components/ui/label"
+
 
 import { filterData } from './helper/filtedData'
 import ListGames from './components/ListGames'
@@ -88,18 +77,16 @@ export default function Home() {
     return acc
   }, {})
 
-  //const numbersArray = Array.from({ length: 90 }, (_, index) => index + 1)
-
-
-  
-
-  //console.log(newstatus)
   
 // @ts-ignore
 
   let sortedResult = Object.entries(results).sort((a,b)=>b[1] - a[1]).slice(0,8).splice(1)
 
-
+  const handleReset=()=>{
+    setGameType('')
+    setStartDate(undefined)
+    setEndDate(undefined)
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
@@ -132,7 +119,7 @@ export default function Home() {
 
                
 
-                  {/* <div className="grid gap-4 py-4">
+                  <div className="grid gap-4 py-4">
                     <div className="flex flex-col w-full items-center mb-8 space-y-4 md:flex ">
                       <div className="flex items-center space-x-4">
                         <p className="flex items-left font-bold font-mono">
@@ -155,13 +142,13 @@ export default function Home() {
                         />
                       </div>
                     </div>
-                  </div> */}
+                  </div>
 
        
                   <DialogFooter className="z-10 ">
 
                   <div className="flex w-full mt-4 justify-center space-x-40 ">
-                  <DialogTrigger onClick={()=>setGameType('')} asChild>
+                  <DialogTrigger onClick={()=>handleReset()} asChild>
                    
                     <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
                     
@@ -220,7 +207,9 @@ export default function Home() {
 
 
                <div className="flex w-full mt-4 justify-center space-x-40 ">
-                  <div onClick={()=>setGameType('')} >
+                  <div onClick={()=>handleReset(
+
+                  )} >
                    
                     <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
                     
@@ -231,7 +220,7 @@ export default function Home() {
 
 
               
-              {/* <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4">
                 <p className="flex items-left font-bold font-mono">From</p>
 
                
@@ -241,7 +230,7 @@ export default function Home() {
               <div className="flex items-center space-x-4 mb-4">
                 <p className="flex items-left ml-4 font-bold font-mono">To</p>
                 <DatePicker startdate={enddate} setStartDate={setEndDate} />
-              </div> */}
+              </div>
 
             </div>
             <p className="flex text-xl font-mono font-bold">
@@ -273,50 +262,10 @@ export default function Home() {
                         ))
                       }
 
-                    
-
-                    {/* })} */}
-
-            
                 </div>
               </div>
             </div>
 
-            {/* <p className="flex text-xl font-mono font-bold">Unplayed Numbers</p> */}
-            {/* <div className="flex w-full items-center h-24 rounded-full bg-yellow-900k shadow-lg overflow-hidden ">
-              <div className="flex overflow-x-scroll  hide-scroll-bar py-2 h-full items-center ">
-                <div className="flex flex-nowrap lg:ml-40 md:ml-20 ml-10   ">
-                  {numbersArray.map((num, i) => {
-
-                    return (
-                      
-                    Object.entries(results)
-                      .sort()
-                      .map((val, i) =>{
-
-                        val[0] !== num.toString() 
-                        return (
-                      <div
-                      key={num}
-                      className={` ${
-                        colors[Math.floor(Math.random() * 4)]
-                      } shadow-xl border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}
-                    >
-                   
-                    <p className="text-2xl">{val[0] as string}</p>  
-                   </div>
-                        )
-                      } 
-
-                      )
-                      )
-
-                   })}
-
-                  
-                </div>
-              </div>
-            </div> */}
             
           </div>
         </div>
