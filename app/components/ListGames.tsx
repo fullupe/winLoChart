@@ -33,7 +33,7 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="CROSS RIVERS SPECIAL">CROSS RIVERS SPECIAL</SelectItem>
                 <SelectItem value="DREAM NIGHT">DREAM NIGHT</SelectItem>
                 <SelectItem value="ENUGU SPECIAL">ENUGU SPECIAL</SelectItem>
-                <SelectItem value="GOOD NIGTH">GOOD NIGTH</SelectItem>
+                <SelectItem value="GOOD NIGHT">GOOD NIGHT</SelectItem>
                 <SelectItem value="INTERNATIONAL">INTERNATIONAL</SelectItem>
                 <SelectItem value="JACKPOT">JACKPOT</SelectItem>
                 <SelectItem value="ONITSHA SPECIAL">ONITSHA SPECIAL</SelectItem>
