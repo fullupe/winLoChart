@@ -115,7 +115,7 @@ export default function Home() {
                   </DialogHeader>
 
 
-                <ListGames gameType={gameType} setGameType={setGameType}/>
+                <ListGames gameType={gameType} setGameType={setGameType} customStyle="pl-12"/>
 
                
 
@@ -202,7 +202,7 @@ export default function Home() {
             <div className="w-full flex flex-col items-center justify-center pl-12 mb-3">
             <p className="text-center text-md font-bold pb-3"> Select your Game</p>
 
-                <ListGames gameType={gameType} setGameType={setGameType}/>
+                <ListGames gameType={gameType} setGameType={setGameType} customStyle="pl-0"/>
                </div>
 
 

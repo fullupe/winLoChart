@@ -11,12 +11,13 @@ import {
 
 type Props = {
     setGameType:React.Dispatch<React.SetStateAction<string>>;
-    gameType:string
+    gameType:string;
+    customStyle?:string
 }
 
-function ListGames({gameType,setGameType}: Props) {
+function ListGames({gameType,setGameType, customStyle}: Props) {
   return (
-    <div className="w-full flex items-center justify-center pl-12">
+    <div className={`w-full flex items-center justify-center ${customStyle}`}>
                 <Select value={gameType} onValueChange={setGameType}>
                 <SelectTrigger className="w-[280px]">
                 <SelectValue placeholder="Select Game's" />
@@ -45,7 +46,7 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="SUNRISE">SUNRISE</SelectItem>
 
                 <SelectItem value="MONDAY SPECIAL EAST">MONDAY SPECIAL EAST</SelectItem>
-                <SelectItem value="MONDAY SPECIAL">MONDAY SPECIALY</SelectItem>
+                <SelectItem value="MONDAY SPECIAL">MONDAY SPECIAL</SelectItem>
                 <SelectItem value="VAG MONDAY">VAG MONDAY</SelectItem>
 
                 <SelectItem value="LUCKY NG EAST">LUCKY NG EAST</SelectItem>
@@ -70,6 +71,7 @@ function ListGames({gameType,setGameType}: Props) {
                 <SelectItem value="VAG SATURDAY">VAG SATURDAY</SelectItem>
 
                 <SelectItem value="SUNDAY SPECIAL">SUNDAY SPECIAL</SelectItem>
+                <SelectItem value="BLESSED SUNDAY">BLESSED SUNDAY</SelectItem>
                 </SelectGroup>
                 </SelectContent> 
                 </Select>
