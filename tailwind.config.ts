@@ -3,10 +3,10 @@ export {}
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './pages/**/*.{ts,js,jsx,tsx}',
+    './components/**/*.{ts,js,jsx,tsx}',
+    './app/**/*.{ts,js,jsx,tsx}',
+   
 	],
   theme: {
     container: {
@@ -17,32 +17,6 @@ module.exports = {
       },
     },
     extend: {
-
-    
-
-
-
-      // animation:{
-      //   blob:"blob 7s infinite"
-      // },
-
-      // keyframes:{
-      //   blob:{
-      //     "0%":{
-      //       transform: "scale(1)"
-      //     },
-      //     "33%":{
-      //       transform:"scale(1.1)"
-      //     },
-      //     "66%":{
-      //       transform:"scale(0.9)"
-      //     },
-      //     "100%":{
-      //       transform:"scale(1)"
-      //     },
-      //   }
-
-      // },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

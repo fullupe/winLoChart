@@ -19,7 +19,7 @@ export function filterData(startDate:Date, endDate:Date, gameType: string) {
         (!endDate || new Date(item.createdAt).toDateString()  <= new Date(endDate).toDateString() );
   
       // Check if the category matches the selected category
-      const categoryMatch = !gameType || item.game_type === gameType;
+      const categoryMatch = !gameType || item.game_type.toUpperCase() == gameType.toUpperCase();
   
       // Return true if both conditions are met
       return dateInRange && categoryMatch;

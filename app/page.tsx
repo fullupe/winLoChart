@@ -2,7 +2,7 @@
 
 import Statisticboard from './components/Statisticboard'
 import colors from '../colors'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from './components/DatePicker'
 
 import daysSpent from "./helper/daysSpent"
@@ -40,6 +40,7 @@ export default function Home() {
                                        // @ts-ignore
   const DataApi =filterData(startdate,enddate,gameType) 
 
+  const [filtedandSplice,setFiltedandSplice]=useState()
 
 
   //console.log("data,",DataApi)
@@ -76,11 +77,12 @@ export default function Home() {
 
     return acc
   }, {})
+  // @ts-ignore
 
   
-// @ts-ignore
+  let sortedResult = Object.entries(results).sort((a,b)=>b[1] - a[1]).slice(0,7)
 
-  let sortedResult = Object.entries(results).sort((a,b)=>b[1] - a[1]).slice(0,8).splice(1)
+
 
   const handleReset=()=>{
     setGameType('')
@@ -106,7 +108,7 @@ export default function Home() {
                 
                   <CalendarIcon className="ml-6 h-6 w-8 cursor-pointer" />
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] h-[50%]">
                   <DialogHeader>
                     <DialogTitle>Options</DialogTitle>
                     <DialogDescription>
@@ -147,16 +149,17 @@ export default function Home() {
        
                   <DialogFooter className="z-10 ">
 
-                  <div className="flex w-full mt-4 justify-center space-x-40 ">
+                  <div className="flex w-full mt-4 justify-center space-x-40">
                   <DialogTrigger onClick={()=>handleReset()} asChild>
                    
-                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer,
+                    "/>
                     
                   </DialogTrigger>
 
                   <DialogTrigger asChild>
                    {
-                     gameType && (
+                     gameType || startdate   && (
                        <SearchIcon className="ml-6 h-6 w-8 cursor-pointer"/>
 
                      )
@@ -245,15 +248,24 @@ export default function Home() {
                       {
                         sortedResult.map((va)=>(
                           <div className="relative items-centers justify-center flex">
+
+                          {
+                            va[0][0] != '0' &&
+                          
                       <div
                         key={va[0]}
                         className={` ${
                           colors[Math.floor(Math.random() * 4)]
-                        } shadow-xl inline-block  border-2 mx-auto border-black  text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}
+                        } shadow-xl inline-block  border-2 mx-auto border-black   text-white  rounded-full flex  items-center justify-center  h-14 w-14 md:w-12 md:h-12`}
                       >
-                        <p className="text-2xl">{va[0] as string}</p>
+                        
+                          
+                          <p className="text-2xl">{va[0] as string}</p>
+                        
                         
                       </div>
+                      }
+
 
                       <p className="absolute rounded-full  border-white border-2 bg-black justify-center flex items-center text-center z-10 text-white shadow-lg  text-[9px] h-5 w-5 top-10 left-5 md:left-4">{va[1] as string }</p>
 
