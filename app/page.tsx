@@ -114,7 +114,7 @@ export default function Home() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px] h-[50%]">
                   <DialogHeader>
-                    <DialogTitle>Options</DialogTitle>
+                    {/* <DialogTitle>Options</DialogTitle> */}
                     <DialogDescription>
                      Select your Game
                     </DialogDescription>
@@ -153,7 +153,7 @@ export default function Home() {
        
                   <DialogFooter className="z-10 ">
 
-                  <div className="flex w-full mt-4 justify-center space-x-40">
+                  <div className="flex w-full mt-4 justify-center space-x-40 pb-10">
                   <DialogTrigger onClick={()=>handleReset()} asChild>
                    
                     {/* <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/> */}
