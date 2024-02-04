@@ -7,6 +7,7 @@ import DatePicker from './components/DatePicker'
 
 import Adsense from "./components/Adsense"
 
+
 import daysSpent from "./helper/daysSpent"
 
 //import { Select, SelectItem } from "@tremor/react";
@@ -21,12 +22,13 @@ import {
 } from '@/components/ui/dialog'
 
 
-import {CalendarIcon, ListRestartIcon, SearchIcon } from 'lucide-react'
+import {CalendarIcon, ListRestartIcon, SearchCheckIcon, SearchIcon, Undo2Icon } from 'lucide-react'
 import DarkModeToggle from './components/DarkModeToggle'
 
 
 import { filterData } from './helper/filtedData'
 import ListGames from './components/ListGames'
+import { Button } from '@/components/ui/button'
 
 
 
@@ -154,18 +156,24 @@ export default function Home() {
                   <div className="flex w-full mt-4 justify-center space-x-40">
                   <DialogTrigger onClick={()=>handleReset()} asChild>
                    
-                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer,
-                    "/>
+                    {/* <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/> */}
+                    <Button variant="secondary">
+                    <Undo2Icon className="mr-2 h-4 w-4" /> 
+                      Reset
+                      </Button>
                     
                   </DialogTrigger>
 
                   <DialogTrigger asChild>
-                   {
-                     gameType || startdate   && (
-                       <SearchIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+                   
 
-                     )
-                   }
+                       {/* <SearchIcon className="ml-6 h-6 w-8 cursor-pointer"/> */}
+                      <Button>
+                      <SearchCheckIcon className="mr-2 h-4 w-4" /> 
+                        Yes
+                        </Button>
+
+                  
                   </DialogTrigger>
                   </div>
 
@@ -216,7 +224,11 @@ export default function Home() {
 
                   )} >
                    
-                    <ListRestartIcon className="ml-6 h-6 w-8 cursor-pointer"/>
+              
+                    <Button >
+                    <Undo2Icon className="mr-2 h-4 w-4" /> 
+                      Reset
+                      </Button>
                     
                   </div>
                   </div>
