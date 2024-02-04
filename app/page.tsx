@@ -5,6 +5,8 @@ import colors from '../colors'
 import React, { useEffect, useState } from 'react'
 import DatePicker from './components/DatePicker'
 
+import Adsense from "./components/Adsense"
+
 import daysSpent from "./helper/daysSpent"
 
 //import { Select, SelectItem } from "@tremor/react";
@@ -277,6 +279,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+
+            
+            <small className=" text-lg  font-poppins ">
+              {null }
+            
+              <Adsense/>
+            </small>
 
             
           </div>
